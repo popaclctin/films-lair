@@ -1,13 +1,16 @@
 import { Route, Routes } from 'react-router-dom';
+import Layout from './components/Layout/Layout';
 import Home from './pages/Home';
-import MovieDetails from './pages/MovieDetails';
+import FilmDetails from './pages/FilmDetails';
 
 function App() {
   return (
-    <Routes>
-      <Route path='/' element={<Home />} />
-      <Route path='movie' element={<MovieDetails />} />
-    </Routes>
+    <Layout>
+      <Routes>
+        <Route path='/' element={<Home />} />
+        <Route path='movie' element={<FilmDetails />} />
+      </Routes>
+    </Layout>
   );
 }
 
