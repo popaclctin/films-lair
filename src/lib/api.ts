@@ -1,10 +1,10 @@
-import { Films } from '../types/types';
+import { FilmsType } from '../types';
 import { SEARCH_BASE_URL, NOW_PLAYING_BASE_URL } from './config';
 
 export async function fetchFilms(
   page: number,
   searchTerm: string
-): Promise<Films> {
+): Promise<FilmsType> {
   const endpoint: string = searchTerm
     ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
     : `${NOW_PLAYING_BASE_URL}&page=${page}`;

@@ -1,4 +1,4 @@
-export type Film = {
+export type FilmType = {
   id: number;
   title: string;
   original_title: string;
@@ -14,9 +14,9 @@ export type Film = {
   poster_path: string | null;
 };
 
-export type Films = {
+export type FilmsType = {
   page: number;
-  results: Film[];
+  results: FilmType[];
   total_pages: number;
   total_results: number;
 };
