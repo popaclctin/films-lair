@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilmType } from '../../types';
+import type { FilmType } from '../../types';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../lib/config';
 
 export default function Film({ title, poster_path, vote_average }: FilmType) {

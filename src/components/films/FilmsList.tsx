@@ -1,5 +1,5 @@
 import React from 'react';
-import { FilmType } from '../../types';
+import type { FilmType } from '../../types';
 import Film from './Film';
 
 type Props = {
