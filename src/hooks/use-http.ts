@@ -1,15 +1,14 @@
 import { useReducer, useCallback } from 'react';
-import { FilmsType } from '../types';
 
 interface HttpState {
-  data: FilmsType | null;
+  data: any;
   error: string | null;
   isLoading: boolean;
 }
 
 type HttpAction =
   | { type: 'SEND' }
-  | { type: 'SUCCESS'; responseData: FilmsType }
+  | { type: 'SUCCESS'; responseData: any }
   | { type: 'ERROR'; errorMessage: string };
 
 function httpReducer(state: HttpState, action: HttpAction): HttpState {
@@ -40,11 +39,7 @@ function httpReducer(state: HttpState, action: HttpAction): HttpState {
   return state;
 }
 
-interface UseHttpReturnType extends HttpState {
-  sendRequest: () => Promise<void>;
-}
-
-function useHttp(requestFunction: () => Promise<FilmsType>): UseHttpReturnType {
+function useHttp(requestFunction: () => Promise<any>) {
   const [state, dispatch] = useReducer(httpReducer, {
     data: null,
     error: null,
