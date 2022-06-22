@@ -1,5 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
-import Layout from './components/layout/Layout';
+import Layout from './components/Layout/Layout';
+import { GlobalStyle } from './GlobalStyle';
 import AllFilms from './pages/AllFilms';
 import FilmDetails from './pages/FilmDetails';
 import NotFound from './pages/NotFound';
@@ -13,6 +14,7 @@ function App() {
         <Route path='/films/:filmId' element={<FilmDetails />} />
         <Route path='*' element={<NotFound />} />
       </Routes>
+      <GlobalStyle />
     </Layout>
   );
 }

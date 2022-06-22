@@ -1,15 +1,17 @@
 import React, { Fragment } from 'react';
 import MainHeader from './MainHeader';
 
-interface LayoutProps {
-  children: JSX.Element | JSX.Element[];
+interface Props {
+  children: React.ReactNode;
 }
 
-export default function Layout(props: LayoutProps): JSX.Element {
+const Layout: React.FC<Props> = (props) => {
   return (
     <Fragment>
       <MainHeader />
       <main>{props.children}</main>
     </Fragment>
   );
-}
+};
+
+export default Layout;

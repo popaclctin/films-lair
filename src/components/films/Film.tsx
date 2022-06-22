@@ -1,10 +1,11 @@
 import React from 'react';
+import { Wrapper } from './Film.styles';
 import type { FilmType } from '../../types';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../lib/config';
 
-export default function Film({ title, poster_path, vote_average }: FilmType) {
+const Film: React.FC<FilmType> = ({ title, poster_path, vote_average }) => {
   return (
-    <div>
+    <Wrapper>
       <div>
         <img
           src={
@@ -19,6 +20,8 @@ export default function Film({ title, poster_path, vote_average }: FilmType) {
         <p>{vote_average}</p>
         <h1>{title}</h1>
       </div>
-    </div>
+    </Wrapper>
   );
-}
+};
+
+export default Film;

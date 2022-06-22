@@ -3,9 +3,9 @@ import { fetchFilms, fetchGenres } from '../lib/api';
 import useHttp from '../hooks/use-http';
 import { useAppDispatch, useAppSelector } from '../hooks/use-redux';
 import { filmsActions } from '../store/films-slice';
-import FilmsList from '../components/films/FilmsList';
+import FilmsList from '../components/Films/FilmsList';
 
-export default function AllFilms(): JSX.Element {
+const AllFilms: React.FC = () => {
   const dispatch = useAppDispatch();
   // const films = useAppSelector((state) => state.films.films);
   const fetchLatestFilms = useCallback(async () => fetchFilms(1, ''), []);
@@ -33,4 +33,6 @@ export default function AllFilms(): JSX.Element {
       {fetchedfilms && <FilmsList films={fetchedfilms.results} />}
     </section>
   );
-}
+};
+
+export default AllFilms;
