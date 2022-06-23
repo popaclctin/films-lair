@@ -12,6 +12,7 @@ export type FilmType = {
   vote_count: number;
   backdrop_path: string | null;
   poster_path: string | null;
+  genre_ids: number[];
 };
 
 export type FilmsType = {
@@ -20,3 +21,5 @@ export type FilmsType = {
   total_pages: number;
   total_results: number;
 };
+
+export type GenresType = { id: number; name: string }[];

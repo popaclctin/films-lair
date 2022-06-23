@@ -4,7 +4,7 @@ import {
   GENRES_BASE_URL,
 } from './config';
 
-export async function fetchFilms(page: number, searchTerm: string) {
+export async function fetchFilms(page: number, searchTerm: string = '') {
   const endpoint: string = searchTerm
     ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
     : `${NOW_PLAYING_BASE_URL}&page=${page}`;

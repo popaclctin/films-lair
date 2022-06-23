@@ -1,36 +1,27 @@
-import React, { useCallback, useEffect } from 'react';
-import { fetchFilms, fetchGenres } from '../lib/api';
-import useHttp from '../hooks/use-http';
+import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/use-redux';
-import { filmsActions } from '../store/films-slice';
 import FilmsList from '../components/Films/FilmsList';
+import {
+  fetchLatestFilmsAction,
+  fetchGenresAction,
+} from '../store/films-actions';
 
 const AllFilms: React.FC = () => {
   const dispatch = useAppDispatch();
-  // const films = useAppSelector((state) => state.films.films);
-  const fetchLatestFilms = useCallback(async () => fetchFilms(1, ''), []);
-  const {
-    data: fetchedfilms,
-    isLoading,
-    error,
-    sendRequest: fetchLatestFilmsRequest,
-  } = useHttp(fetchLatestFilms);
 
-  const { data: genres, sendRequest: fetchGenresRequest } =
-    useHttp(fetchGenres);
+  const films = useAppSelector((state) => state.films.films);
+  // const genres = useAppSelector((state) => state.films.genres);
 
   useEffect(() => {
-    fetchLatestFilmsRequest();
-    fetchGenresRequest();
-  }, [fetchLatestFilmsRequest, fetchGenresRequest]);
-
-  dispatch(filmsActions.replaceFilms(fetchedfilms));
+    dispatch(fetchLatestFilmsAction());
+    dispatch(fetchGenresAction());
+  }, [dispatch]);
 
   return (
     <section>
-      {isLoading ?? <p>Fetching films...</p>}
-      {!error ?? <p>Something went wrong...</p>}
-      {fetchedfilms && <FilmsList films={fetchedfilms.results} />}
+      {/* {isLoading ?? <p>Fetching films...</p>}
+      {!error ?? <p>Something went wrong...</p>} */}
+      {films && <FilmsList films={films.results} />}
     </section>
   );
 };

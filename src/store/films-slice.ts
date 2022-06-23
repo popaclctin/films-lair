@@ -1,9 +1,10 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { FilmType, FilmsType } from '../types';
+import { FilmType, FilmsType, GenresType } from '../types';
 
 interface FilmsState {
   films: FilmsType;
   favourites: FilmType[];
+  genres: GenresType;
 }
 
 const initialState: FilmsState = {
@@ -14,6 +15,7 @@ const initialState: FilmsState = {
     total_results: 0,
   },
   favourites: [],
+  genres: [],
 };
 
 const filmsSlice = createSlice({
@@ -22,6 +24,9 @@ const filmsSlice = createSlice({
   reducers: {
     replaceFilms(state, action: PayloadAction<FilmsType>) {
       state.films = action.payload;
+    },
+    replaceGenres(state, action: PayloadAction<GenresType>) {
+      state.genres = action.payload;
     },
     addFilmToFavourites(state, action: PayloadAction<FilmType>) {
       const newFilm = action.payload;
