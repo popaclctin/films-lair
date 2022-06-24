@@ -10,6 +10,9 @@ const AllFilms: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const films = useAppSelector((state) => state.films.films);
+  const error = useAppSelector((state) => state.films.error);
+  const isLoading = useAppSelector((state) => state.films.isLoading);
+
   // const genres = useAppSelector((state) => state.films.genres);
 
   useEffect(() => {
@@ -19,9 +22,9 @@ const AllFilms: React.FC = () => {
 
   return (
     <section>
-      {/* {isLoading ?? <p>Fetching films...</p>}
-      {!error ?? <p>Something went wrong...</p>} */}
-      {films && <FilmsList films={films.results} />}
+      {isLoading && <p>Fetching films...</p>}
+      {error && <p>{error}</p>}
+      {films.results.length !== 0 && <FilmsList films={films.results} />}
     </section>
   );
 };

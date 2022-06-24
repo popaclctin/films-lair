@@ -9,12 +9,11 @@ export async function fetchFilms(page: number, searchTerm: string = '') {
     ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
     : `${NOW_PLAYING_BASE_URL}&page=${page}`;
   const response = await fetch(endpoint);
+  const data = await response.json();
   if (!response.ok) {
-    //TODO: check the structure of a returned error
-    throw new Error('Could not fetch films!');
+    throw new Error(`${data.status_code}: ${data.status_message}`);
   }
-  const films = await response.json();
-  return films;
+  return data;
 }
 
 export async function fetchGenres() {

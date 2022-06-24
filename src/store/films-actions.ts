@@ -5,11 +5,17 @@ import { filmsActions } from './films-slice';
 export function fetchLatestFilmsAction() {
   return async (dispatch: AppDispatch) => {
     try {
+      dispatch(filmsActions.setIsLoading(true));
       const filmsData = await fetchFilms(1);
       dispatch(filmsActions.replaceFilms(filmsData));
     } catch (error) {
-      //TODO: implement error handling
+      let message;
+      if (error instanceof Error) message = error.message;
+      else message = String(error);
+      dispatch(filmsActions.setError(message));
       console.log(error);
+    } finally {
+      dispatch(filmsActions.setIsLoading(false));
     }
   };
 }

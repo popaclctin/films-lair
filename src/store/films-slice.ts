@@ -1,11 +1,13 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FilmType, FilmsType, GenresType } from '../types';
 
-interface FilmsState {
+type FilmsState = {
   films: FilmsType;
   favourites: FilmType[];
   genres: GenresType;
-}
+  isLoading: boolean;
+  error: string;
+};
 
 const initialState: FilmsState = {
   films: {
@@ -16,6 +18,8 @@ const initialState: FilmsState = {
   },
   favourites: [],
   genres: [],
+  isLoading: false,
+  error: '',
 };
 
 const filmsSlice = createSlice({
@@ -27,6 +31,12 @@ const filmsSlice = createSlice({
     },
     replaceGenres(state, action: PayloadAction<GenresType>) {
       state.genres = action.payload;
+    },
+    setError(state, action: PayloadAction<string>) {
+      state.error = action.payload;
+    },
+    setIsLoading(state, action: PayloadAction<boolean>) {
+      state.isLoading = action.payload;
     },
     addFilmToFavourites(state, action: PayloadAction<FilmType>) {
       const newFilm = action.payload;
