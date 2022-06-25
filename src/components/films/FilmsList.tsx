@@ -7,7 +7,7 @@ type Props = {
   films: FilmType[];
 };
 
-export default function FilmsList(props: Props) {
+const FilmsList: React.FC<Props> = (props) => {
   const films = props.films;
   return (
     <Wrapper>
@@ -18,4 +18,6 @@ export default function FilmsList(props: Props) {
       ))}
     </Wrapper>
   );
-}
+};
+
+export default FilmsList;

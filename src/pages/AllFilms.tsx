@@ -1,32 +1,44 @@
-import React, { useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/use-redux';
 import FilmsList from '../components/Films/FilmsList';
-import {
-  fetchLatestFilmsAction,
-  fetchGenresAction,
-} from '../store/films-actions';
+import { LoadingSpinner } from '../components/UI/LoadingSpinner';
+import { LoadMoreBtn } from '../components/UI/LoadMoreBtn';
+import { fetchLatestFilms } from '../store/films-slice';
 
 const AllFilms: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const films = useAppSelector((state) => state.films.films);
+  const status = useAppSelector((state) => state.films.status);
   const error = useAppSelector((state) => state.films.error);
-  const isLoading = useAppSelector((state) => state.films.isLoading);
 
-  // const genres = useAppSelector((state) => state.films.genres);
+  // useEffect(() => {
+  //   if (status === 'idle') dispatch(fetchLatestFilms(1));
+  // }, []);
 
-  useEffect(() => {
-    dispatch(fetchLatestFilmsAction());
-    dispatch(fetchGenresAction());
-  }, [dispatch]);
+  const loadMoreFilmsHandler = () => {
+    dispatch(fetchLatestFilms(films.page + 1));
+  };
 
-  return (
-    <section>
-      {isLoading && <p>Fetching films...</p>}
-      {error && <p>{error}</p>}
-      {films.results.length !== 0 && <FilmsList films={films.results} />}
-    </section>
-  );
+  let content = null;
+
+  if (status === 'loading') {
+    content = <LoadingSpinner />;
+  } else if (status === 'failed') {
+    content = <p>{error}</p>;
+  } else if (status === 'succeeded') {
+    content =
+      films.results.length !== 0 ? (
+        <Fragment>
+          <FilmsList films={films.results} />
+          <LoadMoreBtn isLoading={false} onClick={loadMoreFilmsHandler} />
+        </Fragment>
+      ) : (
+        <p>There are no films!</p>
+      );
+  }
+
+  return content;
 };
 
 export default AllFilms;

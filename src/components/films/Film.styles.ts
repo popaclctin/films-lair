@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
 
   .film_poster {
     img {
+      min-height: 480px;
       object-fit: cover;
     }
   }

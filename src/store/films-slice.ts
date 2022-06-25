@@ -1,55 +1,83 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { fetchFilms, fetchGenres } from '../lib/api';
 import { FilmType, FilmsType, GenresType } from '../types';
 
 type FilmsState = {
   films: FilmsType;
   favourites: FilmType[];
   genres: GenresType;
-  isLoading: boolean;
-  error: string;
+  status: 'idle' | 'loading' | 'succeeded' | 'failed';
+  error: string | null;
 };
 
 const initialState: FilmsState = {
   films: {
-    page: 0,
+    page: 1,
     results: [],
-    total_pages: 0,
+    total_pages: 1,
     total_results: 0,
   },
   favourites: [],
   genres: [],
-  isLoading: false,
-  error: '',
+  status: 'idle',
+  error: null,
 };
 
+// Thunk action creators
+export const fetchLatestFilms = createAsyncThunk(
+  'films/fetchLatestFilms',
+  async (page: number) => {
+    const filmsData = await fetchFilms(page);
+    return filmsData;
+  }
+);
+
+export const fetchAllGenres = createAsyncThunk(
+  'films/fetchGenres',
+  async () => {
+    const genresData = await fetchGenres();
+    return genresData.genres;
+  }
+);
+
 const filmsSlice = createSlice({
-  name: 'favourites',
+  name: 'films',
   initialState,
   reducers: {
-    replaceFilms(state, action: PayloadAction<FilmsType>) {
-      state.films = action.payload;
+    updateFilms(state, action: PayloadAction<FilmsType>) {
+      const newFilmsState = {
+        ...action.payload,
+        results: [...state.films.results, ...action.payload.results],
+      };
+      state.films = newFilmsState;
     },
     replaceGenres(state, action: PayloadAction<GenresType>) {
       state.genres = action.payload;
     },
-    setError(state, action: PayloadAction<string>) {
-      state.error = action.payload;
-    },
-    setIsLoading(state, action: PayloadAction<boolean>) {
-      state.isLoading = action.payload;
-    },
-    addFilmToFavourites(state, action: PayloadAction<FilmType>) {
-      const newFilm = action.payload;
-      const existingFilm = state.favourites.find(
-        (film) => film.id === newFilm.id
-      );
-      if (!existingFilm) {
-        state.favourites.push(newFilm);
-      }
-    },
+  },
+  extraReducers(builder) {
+    builder
+      .addCase(fetchLatestFilms.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchLatestFilms.fulfilled, (state, action) => {
+        state.status = 'succeeded';
+        state.films = {
+          ...action.payload,
+          results: [...state.films.results, ...action.payload.results],
+        };
+      })
+      .addCase(fetchLatestFilms.rejected, (state, action) => {
+        state.status = 'failed';
+        if (action.error instanceof Error) state.error = action.error.message;
+        else state.error = String(action.error);
+      })
+      .addCase(fetchAllGenres.fulfilled, (state, action) => {
+        state.genres = action.payload;
+      });
   },
 });
 
-export const filmsActions = filmsSlice.actions;
+export const { updateFilms, replaceGenres } = filmsSlice.actions;
 
 export default filmsSlice.reducer;
