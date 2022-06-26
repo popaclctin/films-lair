@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { fetchFilms, fetchGenres } from '../lib/api';
+import { fetchFilms, fetchGenres } from '../lib/filmsApi';
 import { FilmType, FilmsType, GenresType } from '../types';
 
-type FilmsState = {
+type State = {
   films: FilmsType;
   favourites: FilmType[];
   genres: GenresType;
@@ -10,7 +10,7 @@ type FilmsState = {
   error: string | null;
 };
 
-const initialState: FilmsState = {
+const initialState: State = {
   films: {
     page: 1,
     results: [],
@@ -44,14 +44,14 @@ const filmsSlice = createSlice({
   name: 'films',
   initialState,
   reducers: {
-    updateFilms(state, action: PayloadAction<FilmsType>) {
+    filmsUpdated(state, action: PayloadAction<FilmsType>) {
       const newFilmsState = {
         ...action.payload,
         results: [...state.films.results, ...action.payload.results],
       };
       state.films = newFilmsState;
     },
-    replaceGenres(state, action: PayloadAction<GenresType>) {
+    genresReplaced(state, action: PayloadAction<GenresType>) {
       state.genres = action.payload;
     },
   },
@@ -78,6 +78,6 @@ const filmsSlice = createSlice({
   },
 });
 
-export const { updateFilms, replaceGenres } = filmsSlice.actions;
+export const filmsActions = filmsSlice.actions;
 
 export default filmsSlice.reducer;

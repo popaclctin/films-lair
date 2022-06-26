@@ -12,10 +12,6 @@ const AllFilms: React.FC = () => {
   const status = useAppSelector((state) => state.films.status);
   const error = useAppSelector((state) => state.films.error);
 
-  // useEffect(() => {
-  //   if (status === 'idle') dispatch(fetchLatestFilms(1));
-  // }, []);
-
   const loadMoreFilmsHandler = () => {
     dispatch(fetchLatestFilms(films.page + 1));
   };
