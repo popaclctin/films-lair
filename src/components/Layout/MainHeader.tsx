@@ -22,7 +22,11 @@ const MainHeader: React.FC = () => {
       <SearchInput />
       <nav>
         <ul>
-          {isLoggedIn && <li>Favorites Button</li>}
+          {isLoggedIn && (
+            <li>
+              <Link to='/watchlist'>My WatchList</Link>
+            </li>
+          )}
           {isLoggedIn && <li>{email}</li>}
           {isLoggedIn && (
             <li>

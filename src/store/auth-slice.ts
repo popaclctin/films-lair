@@ -5,6 +5,7 @@ type State = {
   token: string;
   isLoggedIn: boolean;
   email: string;
+  userId: string;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
 };
@@ -13,6 +14,7 @@ const initialState: State = {
   token: '',
   isLoggedIn: false,
   email: '',
+  userId: '',
   status: 'idle',
   error: null,
 };
@@ -55,6 +57,7 @@ const authSlice = createSlice({
           state.token = action.payload.idToken;
           state.isLoggedIn = true;
           state.email = action.payload.email;
+          state.userId = action.payload.localId;
         }
       )
       .addMatcher(isAnyOf(signInUser.pending, signUpUser.pending), (state) => {

@@ -1,10 +1,9 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { fetchFilms, fetchGenres } from '../lib/filmsApi';
-import { FilmType, FilmsType, GenresType } from '../types';
+import { FilmsType, GenresType } from '../types';
 
 type State = {
   films: FilmsType;
-  favourites: FilmType[];
   genres: GenresType;
   status: 'idle' | 'loading' | 'succeeded' | 'failed';
   error: string | null;
@@ -17,7 +16,6 @@ const initialState: State = {
     total_pages: 1,
     total_results: 0,
   },
-  favourites: [],
   genres: [],
   status: 'idle',
   error: null,
@@ -43,18 +41,7 @@ export const fetchAllGenres = createAsyncThunk(
 const filmsSlice = createSlice({
   name: 'films',
   initialState,
-  reducers: {
-    filmsUpdated(state, action: PayloadAction<FilmsType>) {
-      const newFilmsState = {
-        ...action.payload,
-        results: [...state.films.results, ...action.payload.results],
-      };
-      state.films = newFilmsState;
-    },
-    genresReplaced(state, action: PayloadAction<GenresType>) {
-      state.genres = action.payload;
-    },
-  },
+  reducers: {},
   extraReducers(builder) {
     builder
       .addCase(fetchLatestFilms.pending, (state) => {
@@ -78,6 +65,6 @@ const filmsSlice = createSlice({
   },
 });
 
-export const filmsActions = filmsSlice.actions;
+export const actions = filmsSlice.actions;
 
 export default filmsSlice.reducer;

@@ -2,10 +2,11 @@ import {
   SEARCH_BASE_URL,
   NOW_PLAYING_BASE_URL,
   GENRES_BASE_URL,
+  GET_FILM_DETAILS_BASE_URL,
 } from './config';
 
 export async function fetchFilms(page: number, searchTerm: string = '') {
-  const endpoint: string = searchTerm
+  const endpoint = searchTerm
     ? `${SEARCH_BASE_URL}${searchTerm}&page=${page}`
     : `${NOW_PLAYING_BASE_URL}&page=${page}`;
   const response = await fetch(endpoint);
@@ -18,9 +19,19 @@ export async function fetchFilms(page: number, searchTerm: string = '') {
 
 export async function fetchGenres() {
   const response = await fetch(GENRES_BASE_URL);
+  const data = await response.json();
   if (!response.ok) {
-    throw new Error('Could not fetch genres!');
+    throw new Error(`${data.status_code}: ${data.status_message}`);
   }
-  const genres = await response.json();
-  return genres;
+  return data;
+}
+
+export async function fetchFilmDetails(movieId: number) {
+  const endpoint = GET_FILM_DETAILS_BASE_URL(movieId);
+  const response = await fetch(endpoint);
+  const data = await response.json();
+  if (!response.ok) {
+    throw new Error(`${data.status_code}: ${data.status_message}`);
+  }
+  return data;
 }

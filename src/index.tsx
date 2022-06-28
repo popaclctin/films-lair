@@ -4,10 +4,9 @@ import { Provider } from 'react-redux';
 import store from './store';
 import App from './App';
 import { BrowserRouter } from 'react-router-dom';
-import { fetchAllGenres, fetchLatestFilms } from './store/films-slice';
+import { fetchLatestFilms } from './store/films-slice';
 
-// fecth latest films and genres for the first time
-store.dispatch(fetchAllGenres());
+// fecth latest films for the first time
 store.dispatch(fetchLatestFilms(1));
 
 const root = ReactDOM.createRoot(

@@ -13,6 +13,8 @@ export type FilmType = {
   backdrop_path: string | null;
   poster_path: string | null;
   genre_ids: number[];
+  tagline: string | null;
+  genres: { id: number; name: string }[];
 };
 
 export type FilmsType = {
