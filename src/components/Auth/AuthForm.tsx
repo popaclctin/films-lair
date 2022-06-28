@@ -15,8 +15,8 @@ const AuthForm: React.FC = () => {
 
   useEffect(() => {
     if (status === 'succeeded') {
-      navigate('/films', { replace: true });
       dispatch(statusChanged('idle'));
+      navigate('/films', { replace: true });
     }
   }, [status, navigate, dispatch]);
 
