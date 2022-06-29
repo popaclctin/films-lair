@@ -10,8 +10,8 @@ export default function FilmDetailsPage() {
   const { filmId } = useParams();
   const [film, setFilm] = useState<FilmType | null>(null);
 
-  const authToken = useAppSelector((state) => state.auth.token);
-  const userId = useAppSelector((state) => state.auth.userId);
+  const authToken = useAppSelector((state) => state.auth.token) || '';
+  const userId = useAppSelector((state) => state.auth.userId) || '';
 
   useEffect(() => {
     fetchFilmDetails(+filmId!) //convert to number and ignore null type warning
