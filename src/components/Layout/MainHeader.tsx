@@ -1,9 +1,11 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import SearchInput from '../UI/SearchInput';
 import { Header } from './MainHeader.styles';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-redux';
 import { isLoggedOut } from '../../store/auth-slice';
+import { fetchFilmsThunk, searchTermChanged } from '../../store/films-slice';
+import debounce from 'lodash.debounce';
 
 const MainHeader: React.FC = () => {
   const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
@@ -16,12 +18,18 @@ const MainHeader: React.FC = () => {
     navigate('/', { replace: true });
   };
 
+  const searchFilmHandler: React.ChangeEventHandler<HTMLInputElement> = (
+    event
+  ) => {
+    dispatch(searchTermChanged(event.target.value));
+  };
+
   return (
     <Header>
       <Link to='/'>
         <h1>Films Lair</h1>
       </Link>
-      <SearchInput />
+      <SearchInput onChange={searchFilmHandler} />
       <nav>
         <ul>
           {isLoggedIn && (
