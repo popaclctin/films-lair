@@ -13,14 +13,6 @@ export default function FilmDetailsPage() {
   const authToken = useAppSelector((state) => state.auth.token);
   const userId = useAppSelector((state) => state.auth.userId);
 
-  const addToWatchListHandler = (
-    userId: string,
-    authToken: string,
-    film: FilmType
-  ) => {
-    addFilmToWatchList(userId, authToken, film);
-  };
-
   useEffect(() => {
     fetchFilmDetails(+filmId!) //convert to number and ignore null type warning
       .then((data) => {
@@ -35,7 +27,7 @@ export default function FilmDetailsPage() {
     film && (
       <FilmDetails
         film={film}
-        onAddToWatchList={addToWatchListHandler.bind(
+        onAddToWatchList={addFilmToWatchList.bind(
           null,
           userId,
           authToken,

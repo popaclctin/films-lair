@@ -17,5 +17,4 @@ export const SIGNIN_BASE_URL = `https://identitytoolkit.googleapis.com/v1/accoun
 export const SIGNUP_BASE_URL = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${AUTH_API_KEY}`;
 
 //Watch List api config
-export const GET_FIREBASE_DB_URL = (user: string) =>
-  `https://films-lair-default-rtdb.europe-west1.firebasedatabase.app/watchlist/${user}.json`;
+export const FIREBASE_DB_URL = `https://films-lair-default-rtdb.europe-west1.firebasedatabase.app/`;

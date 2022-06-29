@@ -1,7 +1,7 @@
 import React from 'react';
 import SearchInput from '../UI/SearchInput';
 import { Header } from './MainHeader.styles';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-redux';
 import { isLoggedOut } from '../../store/auth-slice';
 
@@ -9,9 +9,11 @@ const MainHeader: React.FC = () => {
   const isLoggedIn = useAppSelector((state) => state.auth.isLoggedIn);
   const email = useAppSelector((state) => state.auth.email);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     dispatch(isLoggedOut());
+    navigate('/', { replace: true });
   };
 
   return (
