@@ -21,25 +21,23 @@ const AllFilms: React.FC = () => {
     dispatch(fetchFilmsThunk({ page: 1, searchTerm }));
   }, [dispatch, searchTerm]);
 
-  let content = null;
-
-  if (status === 'loading') {
-    content = <LoadingSpinner />;
-  } else if (status === 'failed') {
-    content = <p>{error}</p>;
-  } else if (status === 'succeeded') {
-    content =
-      films.results.length !== 0 ? (
-        <Fragment>
+  if (status === 'failed') {
+    return <p>{error}</p>;
+  } else {
+    return (
+      <Fragment>
+        {films.total_results > 0 ? (
           <FilmsList films={films.results} />
-          <LoadMoreBtn isLoading={false} onClick={loadMoreFilmsHandler} />
-        </Fragment>
-      ) : (
-        <p>There are no films!</p>
-      );
+        ) : (
+          <p>There are no films!</p>
+        )}
+        <LoadMoreBtn
+          isLoading={status === 'loading'}
+          onClick={loadMoreFilmsHandler}
+        />
+      </Fragment>
+    );
   }
-
-  return content;
 };
 
 export default AllFilms;

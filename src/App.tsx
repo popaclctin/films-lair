@@ -1,6 +1,6 @@
 import { Route, Routes, Navigate } from 'react-router-dom';
 import Layout from './components/Layout/Layout';
-import { GlobalStyle } from './GlobalStyle';
+import { GlobalStyle } from './styles/Global.styled';
 import AllFilms from './pages/AllFilmsPage';
 import { AuthPage } from './pages/AuthPage';
 import NotFound from './pages/NotFoundPage';

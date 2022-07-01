@@ -1,13 +1,11 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.ul`
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 1rem;
-  padding: 0;
+  padding: 0 1rem;
+  width: min(25rem, 80%);
+  text-align: center;
 
-  li {
-    list-style-type: none;
-  }
+  display: grid;
+  place-items: center;
+  row-gap: 2rem;
 `;

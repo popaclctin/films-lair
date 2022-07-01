@@ -1,4 +1,4 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { fetchFilms } from '../lib/filmsApi';
 import { FilmsType } from '../types';
 
@@ -11,7 +11,7 @@ type State = {
 
 const initialState: State = {
   films: {
-    page: 0,
+    page: 1,
     results: [],
     total_pages: 1,
     total_results: 0,
@@ -43,17 +43,28 @@ const filmsSlice = createSlice({
       .addCase(fetchFilmsThunk.pending, (state) => {
         state.status = 'loading';
       })
-      .addCase(fetchFilmsThunk.fulfilled, (state, action) => {
-        state.status = 'succeeded';
-        if (action.payload.page === 1) {
-          state.films = action.payload;
-        } else {
-          state.films = {
-            ...action.payload,
-            results: [...state.films.results, ...action.payload.results],
-          };
+      .addCase(
+        fetchFilmsThunk.fulfilled,
+        (state, action: PayloadAction<FilmsType>) => {
+          state.status = 'succeeded';
+          if (action.payload.page === 1) {
+            state.films = action.payload;
+          } else {
+            //check if there are duplicates in the payload results
+            action.payload.results.forEach((film) => {
+              if (
+                !state.films.results.find((element) => element.id === film.id)
+              ) {
+                state.films.results.push(film);
+              }
+            });
+            state.films = {
+              ...action.payload,
+              results: state.films.results,
+            };
+          }
         }
-      })
+      )
       .addCase(fetchFilmsThunk.rejected, (state, action) => {
         state.status = 'failed';
         if (action.error instanceof Error) state.error = action.error.message;

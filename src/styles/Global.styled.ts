@@ -1,6 +1,38 @@
 import { createGlobalStyle } from 'styled-components';
 
 export const GlobalStyle = createGlobalStyle`
+    /* ------------------- */
+    /*  Custom properties  */
+    /* ------------------- */
+    :root {
+      /* Mobile */
+      /* Colors */
+      --clr-dark: #3E4147;
+      --clr-light: #eaecef;
+      --clr-accent: #cc4425;
+      --clr-white: #ffffff;
+      --clr-black: #000000;
+
+
+      /* Font sizes */
+      --fs-small: 1rem;
+      --fs-medium: 1.25rem;
+      --fs-large: 2rem;
+
+      /* Font families */
+      --ff-sans: 'Oswald', sans-serif;
+      --ff-serif: 'Arvo', serif;
+
+      /* Desktop: width > 1024px */
+      @media screen and (min-width: 64em) {
+          
+      }
+    }
+
+    /* ------------------- */
+    /*      CSS Reset      */
+    /* ------------------- */
+
       /* Box sizing rules */
     *,
     *::before,
@@ -76,10 +108,12 @@ export const GlobalStyle = createGlobalStyle`
       }
     }
 
-    :root {
-      --clr-light: #fff;
-      --clr-dark: #303030;
-      --clr-accent: #16e0bd;
+    body {
+      font-family: var(--ff-sans);
+      /* font-size: var(--fs-medium); */
     }
 
+    h1 {
+      line-height: 1.3;
+    }
 `;

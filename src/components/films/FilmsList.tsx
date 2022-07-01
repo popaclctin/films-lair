@@ -1,7 +1,6 @@
 import React from 'react';
 import type { FilmType } from '../../types';
 import Film from './Film';
-import { Link } from 'react-router-dom';
 import { Wrapper } from './FilmsList.styles';
 
 type Props = {
@@ -13,11 +12,7 @@ const FilmsList: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       {films.map((film) => (
-        <li key={film.id}>
-          <Link to={`/films/${film.id}`}>
-            <Film {...film} />
-          </Link>
-        </li>
+        <Film {...film} key={film.id} />
       ))}
     </Wrapper>
   );

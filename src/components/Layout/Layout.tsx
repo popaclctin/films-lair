@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react';
 import MainHeader from './MainHeader';
+import { MainStyled } from './Layout.styled';
 
 interface Props {
   children: React.ReactNode;
@@ -9,7 +10,7 @@ const Layout: React.FC<Props> = (props) => {
   return (
     <Fragment>
       <MainHeader />
-      <main>{props.children}</main>
+      <MainStyled>{props.children}</MainStyled>
     </Fragment>
   );
 };

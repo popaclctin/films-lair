@@ -6,7 +6,7 @@ import { faSpinner } from '@fortawesome/free-solid-svg-icons';
 export const LoadingSpinner = () => {
   return (
     <Wrapper>
-      <FontAwesomeIcon icon={faSpinner} size='3x' spin />
+      <FontAwesomeIcon icon={faSpinner} size='lg' spin />
     </Wrapper>
   );
 };
