@@ -12,5 +12,9 @@ export const Wrapper = styled.div`
     border: 0;
     color: var(--clr-white);
     background-color: var(--clr-accent);
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 `;

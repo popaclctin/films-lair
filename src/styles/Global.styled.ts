@@ -114,6 +114,6 @@ export const GlobalStyle = createGlobalStyle`
     }
 
     h1 {
-      line-height: 1.3;
+      line-height: 1.1;
     }
 `;

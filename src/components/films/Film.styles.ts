@@ -33,7 +33,7 @@ export const Wrapper = styled.li`
     display: flux;
     align-content: center;
     gap: 0.2rem;
-    font-size: var(--fs-medium);
+    /* font-size: var(--fs-medium); */
   }
 
   .film_details__rating_star {
@@ -41,16 +41,8 @@ export const Wrapper = styled.li`
   }
 
   .film_details__release_date {
-    font-size: var(--fs-medium);
+    /* font-size: var(--fs-medium); */
     display: flex;
     gap: 0.25rem;
   }
-
-  /* 
-  .film_poster {
-    img {
-      min-height: 480px;
-      object-fit: cover;
-    }
-  } */
 `;

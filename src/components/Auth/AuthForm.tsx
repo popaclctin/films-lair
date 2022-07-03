@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-redux';
 import { signInUser, signUpUser, statusChanged } from '../../store/auth-slice';
 import { LoadingSpinner } from '../UI/LoadingSpinner';
+import { Wrapper } from './AuthForm.styles';
 
 const AuthForm: React.FC = () => {
   const navigate = useNavigate();
@@ -46,15 +47,15 @@ const AuthForm: React.FC = () => {
   };
 
   return (
-    <section>
+    <Wrapper>
       <h1>{isLogin ? 'Login' : 'Create an account'}</h1>
       <form onSubmit={submitHandler}>
-        <div>
-          <label htmlFor='email'>Email</label>
+        <div className='form-input'>
+          <label htmlFor='email'>Email:</label>
           <input type='email' id='email' required ref={emailInputRef} />
         </div>
-        <div>
-          <label htmlFor='password'>Password</label>
+        <div className='form-input'>
+          <label htmlFor='password'>Password:</label>
           <input
             type='password'
             id='password'
@@ -62,22 +63,24 @@ const AuthForm: React.FC = () => {
             ref={passwordInputRef}
           />
         </div>
-        <div>
-          <button type='submit' disabled={status === 'loading'}>
-            {status === 'loading' ? (
-              <LoadingSpinner />
-            ) : isLogin ? (
-              'Login'
-            ) : (
-              'Create account'
-            )}
-          </button>
-          <button type='button' onClick={switchAuthModeHandler}>
-            {isLogin ? 'Create new account' : 'Login with existing account'}
-          </button>
-        </div>
+        <button type='submit' disabled={status === 'loading'}>
+          {status === 'loading' ? (
+            <LoadingSpinner />
+          ) : isLogin ? (
+            'Login'
+          ) : (
+            'Create account'
+          )}
+        </button>
+        <button
+          type='button'
+          onClick={switchAuthModeHandler}
+          className='toggle'
+        >
+          {isLogin ? 'Create new account' : 'Login with existing account'}
+        </button>
       </form>
-    </section>
+    </Wrapper>
   );
 };
 

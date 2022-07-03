@@ -1,7 +1,7 @@
 import React, { useCallback, useMemo } from 'react';
 import SearchInput from '../UI/SearchInput';
 import { Header } from './MainHeader.styles';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-redux';
 import { isLoggedOut } from '../../store/auth-slice';
 import { searchTermChanged } from '../../store/films-slice';
@@ -31,12 +31,15 @@ const MainHeader: React.FC = () => {
     [searchFilmHandler]
   );
 
+  const location = useLocation();
   return (
     <Header>
       <Link to='/'>
         <h1>Films Lair</h1>
       </Link>
-      <SearchInput onChange={debouncedSearchHandler} />
+      {location.pathname === '/films' ? (
+        <SearchInput onChange={debouncedSearchHandler} />
+      ) : null}
       <nav>
         <ul>
           {isLoggedIn && (
