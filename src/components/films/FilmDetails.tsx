@@ -5,6 +5,7 @@ import { Wrapper } from './FilmDetails.styles';
 import { formatReleaseDate, formatRuntime } from '../../lib/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { PrimaryBtn } from '../UI/PrimaryBtn.style';
 
 type Props = {
   film: FilmType;
@@ -73,9 +74,7 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
         </p>
 
         <p className='film_details__overview'>{film.overview}</p>
-        <button className='watchlistBtn' onClick={onAddToWatchList}>
-          Add to watchlist
-        </button>
+        <PrimaryBtn onClick={onAddToWatchList}>Add to watchlist</PrimaryBtn>
       </div>
     </Wrapper>
   );

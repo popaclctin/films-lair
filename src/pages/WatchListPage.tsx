@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import WatchListFilm from '../components/Films/WatchListFilm';
+import Watchlist from '../components/Films/Watchlist';
 import { useAppSelector } from '../hooks/use-redux';
 import { fetchWatchList, removeFilmFromWatchList } from '../lib/dbApi';
 import { FilmType } from '../types';
@@ -36,21 +36,10 @@ const WatchListPage: React.FC = () => {
   }, [authToken, userId]);
 
   return (
-    <ul>
-      {watchList.map((film) => (
-        <li>
-          <WatchListFilm
-            film={film}
-            onRemoveHandler={removeFilmHandler.bind(
-              null,
-              userId,
-              authToken,
-              film.id
-            )}
-          />
-        </li>
-      ))}
-    </ul>
+    <Watchlist
+      films={watchList}
+      onRemove={removeFilmHandler.bind(null, userId, authToken)}
+    />
   );
 };
 

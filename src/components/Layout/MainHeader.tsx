@@ -50,7 +50,9 @@ const MainHeader: React.FC = () => {
           {isLoggedIn && <li>{email}</li>}
           {isLoggedIn && (
             <li>
-              <button onClick={logoutHandler}>Logout</button>
+              <button onClick={logoutHandler} className='logoutBtn'>
+                Logout
+              </button>
             </li>
           )}
           {!isLoggedIn && <Link to='/auth'>Login</Link>}

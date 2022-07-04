@@ -12,7 +12,9 @@ const FilmsList: React.FC<Props> = (props) => {
   return (
     <Wrapper>
       {films.map((film) => (
-        <Film {...film} key={film.id} />
+        <li key={film.id}>
+          <Film {...film} />
+        </li>
       ))}
     </Wrapper>
   );

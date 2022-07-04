@@ -1,6 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { FilmType } from '../../types';
+import { PrimaryBtn } from '../UI/PrimaryBtn.style';
 import Film from './Film';
+import { Wrapper } from './WatchListFilm.style';
 
 type Props = {
   film: FilmType;
@@ -9,10 +11,10 @@ type Props = {
 
 export const WatchListFilm = ({ film, onRemoveHandler }: Props) => {
   return (
-    <Fragment>
+    <Wrapper>
       <Film {...film} />
-      <button onClick={onRemoveHandler}>Remove</button>
-    </Fragment>
+      <PrimaryBtn onClick={onRemoveHandler}>Remove</PrimaryBtn>
+    </Wrapper>
   );
 };
 

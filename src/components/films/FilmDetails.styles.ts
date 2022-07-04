@@ -5,7 +5,6 @@ export const Wrapper = styled.article`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  /* margin: 1rem; */
 
   ul {
     padding: 0;
@@ -15,7 +14,12 @@ export const Wrapper = styled.article`
     list-style-type: none;
   }
 
-  .film_poster {
+  h1 {
+    text-align: center;
+  }
+
+  button {
+    display: inline-block;
   }
 
   .film_details {
@@ -51,7 +55,7 @@ export const Wrapper = styled.article`
     color: orange;
   }
 
-  .film_details > * {
+  .film_details > *:not(button) {
     display: flex;
     align-items: center;
     gap: 0.25rem;
@@ -78,20 +82,5 @@ export const Wrapper = styled.article`
 
   .label {
     font-weight: bold;
-  }
-
-  .watchlistBtn {
-    display: inline-block;
-    padding: 0.5rem;
-    flex: 0 0 default;
-    cursor: pointer;
-    background-color: var(--clr-accent);
-    color: var(--clr-white);
-    border: 0;
-    border-radius: 4px;
-
-    &:active {
-      background-color: var(--clr-dark);
-    }
   }
 `;

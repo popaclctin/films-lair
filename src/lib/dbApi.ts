@@ -12,7 +12,6 @@ export async function fetchWatchList(userId: string, authToken: string) {
   for (const key in data) {
     watchList.push(data[key]);
   }
-  console.log(watchList);
   return watchList;
 }
 

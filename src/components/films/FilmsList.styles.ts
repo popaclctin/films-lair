@@ -8,4 +8,8 @@ export const Wrapper = styled.ul`
   display: grid;
   place-items: center;
   row-gap: 2rem;
+
+  li {
+    list-style-type: none;
+  }
 `;

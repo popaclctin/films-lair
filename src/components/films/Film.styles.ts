@@ -1,10 +1,9 @@
 import styled from 'styled-components';
 
-export const Wrapper = styled.li`
+export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
 
-  list-style-type: none;
   background-color: var(--clr-light);
   color: var(--clr-black);
 
@@ -33,7 +32,6 @@ export const Wrapper = styled.li`
     display: flux;
     align-content: center;
     gap: 0.2rem;
-    /* font-size: var(--fs-medium); */
   }
 
   .film_details__rating_star {
@@ -41,7 +39,6 @@ export const Wrapper = styled.li`
   }
 
   .film_details__release_date {
-    /* font-size: var(--fs-medium); */
     display: flex;
     gap: 0.25rem;
   }
