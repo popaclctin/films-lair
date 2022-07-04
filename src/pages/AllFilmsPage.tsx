@@ -1,9 +1,8 @@
 import React, { Fragment, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../hooks/use-redux';
 import FilmsList from '../components/Films/FilmsList';
-import { LoadingSpinner } from '../components/UI/LoadingSpinner';
 import { LoadMoreBtn } from '../components/UI/LoadMoreBtn';
-import { fetchFilmsThunk } from '../store/films-slice';
+import { fetchFilmsThunk, searchTermChanged } from '../store/films-slice';
 
 const AllFilms: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -18,6 +17,7 @@ const AllFilms: React.FC = () => {
   };
 
   useEffect(() => {
+    dispatch(searchTermChanged(''));
     dispatch(fetchFilmsThunk({ page: 1, searchTerm }));
   }, [dispatch, searchTerm]);
 

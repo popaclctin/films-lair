@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
-
   background-color: var(--clr-light);
   color: var(--clr-black);
 
@@ -18,6 +18,13 @@ export const Wrapper = styled.div`
   a:hover {
     color: var(--clr-accent);
     text-decoration: underline;
+  }
+
+  .film_poster {
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
   }
 
   .film_details {
