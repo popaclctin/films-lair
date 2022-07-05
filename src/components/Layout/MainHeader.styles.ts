@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header`
   position: sticky;
   top: 0;
+  margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -59,5 +60,9 @@ export const Header = styled.header`
   h1 {
     font-family: var(--ff-serif);
     color: var(--clr-light);
+  }
+
+  @media screen and (min-width: 64em) {
+    width: var(--default-width);
   }
 `;

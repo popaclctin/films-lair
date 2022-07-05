@@ -23,6 +23,8 @@ export const GlobalStyle = createGlobalStyle`
       --ff-sans: 'Oswald', sans-serif;
       --ff-serif: 'Arvo', serif;
 
+      --default-width: 80%;
+
       /* Desktop: width > 1024px */
       @media screen and (min-width: 64em) {
           

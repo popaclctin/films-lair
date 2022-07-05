@@ -27,9 +27,10 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
           alt={film.title}
         />
       </div>
-      <h1>{film.title}</h1>
-      <p>{film.tagline}</p>
+
       <div className='film_details'>
+        <h1 className='film_details__title'>{film.title}</h1>
+        <p className='film_details__tagline'>{film.tagline}</p>
         {film.vote_average ? (
           <div className='film_details__rating'>
             <FontAwesomeIcon
