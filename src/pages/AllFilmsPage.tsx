@@ -13,11 +13,14 @@ const AllFilms: React.FC = () => {
   const error = useAppSelector((state) => state.films.error);
 
   const loadMoreFilmsHandler = () => {
-    dispatch(fetchFilmsThunk({ page: films.page + 1, searchTerm }));
+    const nextPage = films.page + 1;
+    if (nextPage <= films.total_pages) {
+      dispatch(fetchFilmsThunk({ page: nextPage, searchTerm }));
+    }
   };
 
   useEffect(() => {
-    dispatch(searchTermChanged(''));
+    // dispatch(searchTermChanged(''));
     dispatch(fetchFilmsThunk({ page: 1, searchTerm }));
   }, [dispatch, searchTerm]);
 
@@ -34,6 +37,7 @@ const AllFilms: React.FC = () => {
         <LoadMoreBtn
           isLoading={status === 'loading'}
           onClick={loadMoreFilmsHandler}
+          isDisabled={films.page === films.total_pages}
         />
       </Fragment>
     );

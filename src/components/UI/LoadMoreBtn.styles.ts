@@ -16,5 +16,10 @@ export const Wrapper = styled.div`
     &:hover {
       cursor: pointer;
     }
+
+    &:disabled {
+      color: var(--clr-dark);
+      background-color: var(--clr-light);
+    }
   }
 `;

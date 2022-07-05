@@ -7,12 +7,17 @@ import { Wrapper } from './LoadMoreBtn.styles';
 type Props = {
   isLoading: boolean;
   onClick: React.MouseEventHandler<HTMLButtonElement>;
+  isDisabled: boolean;
 };
 
-export const LoadMoreBtn: React.FC<Props> = ({ isLoading, onClick }) => {
+export const LoadMoreBtn: React.FC<Props> = ({
+  isLoading,
+  onClick,
+  isDisabled,
+}) => {
   return (
     <Wrapper>
-      <button disabled={isLoading} onClick={onClick}>
+      <button disabled={isLoading || isDisabled} onClick={onClick}>
         {isLoading ? (
           <LoadingSpinner />
         ) : (
