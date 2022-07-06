@@ -118,8 +118,7 @@ const authSlice = createSlice({
         isAnyOf(signInUser.rejected, signUpUser.rejected),
         (state, action) => {
           state.status = 'failed';
-          if (action.error instanceof Error) state.error = action.error.message;
-          else state.error = String(action.error);
+          state.error = action.error.message as string;
         }
       );
   },

@@ -50,4 +50,8 @@ export const Wrapper = styled.section`
       background-color: transparent;
     }
   }
+
+  .error {
+    color: red;
+  }
 `;

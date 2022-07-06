@@ -9,7 +9,7 @@ const AuthForm: React.FC = () => {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const status = useAppSelector((state) => state.auth.status);
-  // const error = useAppSelector((state) => state.auth.error);
+  const error = useAppSelector((state) => state.auth.error);
   const [isLogin, setIsLogin] = useState(true);
   const emailInputRef = useRef<HTMLInputElement>(null);
   const passwordInputRef = useRef<HTMLInputElement>(null);
@@ -43,6 +43,7 @@ const AuthForm: React.FC = () => {
   };
 
   const switchAuthModeHandler = () => {
+    dispatch(statusChanged('idle'));
     setIsLogin((prevState) => !prevState);
   };
 
@@ -63,6 +64,7 @@ const AuthForm: React.FC = () => {
             ref={passwordInputRef}
           />
         </div>
+        {status === 'failed' ? <p className='error'>{error}</p> : null}
         <button type='submit' disabled={status === 'loading'}>
           {status === 'loading' ? (
             <LoadingSpinner />

@@ -14,7 +14,7 @@ export async function login(email: string, password: string) {
   });
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(`${data.error.code}: ${data.error.message}`);
+    throw new Error(data.error.message);
   }
   return data;
 }
@@ -33,7 +33,7 @@ export async function signup(email: string, password: string) {
   });
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(`${data.error.code}: ${data.error.message}`);
+    throw new Error(data.error.message);
   }
   return data;
 }
