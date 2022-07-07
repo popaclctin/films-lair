@@ -1,11 +1,3 @@
-export function getGenreName(
-  genreList: { id: number; name: string }[],
-  id: number
-) {
-  const foundGenre = genreList.find((genre) => genre.id === id);
-  return foundGenre?.name;
-}
-
 export function formatReleaseDate(releaseDate: string) {
   const date = !isNaN(Date.parse(releaseDate)) ? new Date(releaseDate) : null;
   if (date !== null) {

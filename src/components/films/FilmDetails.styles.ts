@@ -5,6 +5,7 @@ export const Wrapper = styled.article`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  background-color: var(--clr-light);
 
   /* Desktop: width > 1024px */
   @media screen and (min-width: 64em) {
@@ -23,8 +24,20 @@ export const Wrapper = styled.article`
     text-align: center;
   }
 
-  button {
-    display: inline-block;
+  .film_poster {
+    flex: 1 0 25%;
+    img {
+      object-fit: cover;
+      width: 100%;
+    }
+  }
+
+  .film_details__addBtn {
+    width: 100%;
+    /* Desktop: width > 1024px */
+    @media screen and (min-width: 64em) {
+      width: 10rem;
+    }
   }
 
   .film_details {
@@ -46,7 +59,6 @@ export const Wrapper = styled.article`
   .film_details__rating {
     position: absolute;
     top: 15%;
-    /* transform: translateY(-50%); */
     right: 0;
     width: 4.5rem;
     height: 4.5rem;

@@ -6,7 +6,7 @@ export async function fetchWatchList(userId: string, authToken: string) {
   const response = await fetch(endpoint);
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(`${data.status_code}: ${data.status_message}`);
+    throw new Error(data.status_message);
   }
   const watchList = [];
   for (const key in data) {
@@ -30,7 +30,7 @@ export async function addFilmToWatchList(
   });
   const data = await response.json();
   if (!response.ok) {
-    throw new Error(`${data.status_code}: ${data.status_message}`);
+    throw new Error(data.status_message);
   }
   return data;
 }

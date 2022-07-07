@@ -3,6 +3,7 @@ import styled from 'styled-components';
 export const Header = styled.header`
   position: sticky;
   top: 0;
+  z-index: 100;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -60,6 +61,14 @@ export const Header = styled.header`
   h1 {
     font-family: var(--ff-serif);
     color: var(--clr-light);
+  }
+
+  .logo {
+    transition: transform 0.3s ease-out;
+  }
+
+  .logo:hover {
+    transform: scale(1.1);
   }
 
   @media screen and (min-width: 64em) {

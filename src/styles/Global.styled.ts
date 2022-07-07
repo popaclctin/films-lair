@@ -17,18 +17,18 @@ export const GlobalStyle = createGlobalStyle`
       /* Font sizes */
       --fs-small: 1rem;
       --fs-medium: 1.25rem;
-      --fs-large: 2rem;
+      --fs-large: 1.75rem;
+
+      /* Desktop: width > 1024px
+      @media screen and (min-width: 64em) {
+        font-size: var(--fs-large);
+      } */
 
       /* Font families */
       --ff-sans: 'Oswald', sans-serif;
       --ff-serif: 'Arvo', serif;
 
       --default-width: 80%;
-
-      /* Desktop: width > 1024px */
-      @media screen and (min-width: 64em) {
-          
-      }
     }
 
     /* ------------------- */
@@ -112,10 +112,11 @@ export const GlobalStyle = createGlobalStyle`
 
     body {
       font-family: var(--ff-sans);
-      /* font-size: var(--fs-medium); */
     }
 
     h1 {
       line-height: 1.1;
+      font-size: var(--fs-large);
+      
     }
 `;

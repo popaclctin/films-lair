@@ -20,7 +20,7 @@ const MainHeader: React.FC = () => {
   return (
     <Header>
       <Link to='/'>
-        <h1>Films Lair</h1>
+        <h1 className='logo'>Films Lair</h1>
       </Link>
       {location.pathname === '/films' ? <SearchInput /> : null}
       <nav>

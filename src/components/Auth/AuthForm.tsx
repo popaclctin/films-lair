@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/use-redux';
 import { signInUser, signUpUser, statusChanged } from '../../store/auth-slice';
 import { LoadingSpinner } from '../UI/LoadingSpinner';
+import { PrimaryBtn } from '../UI/PrimaryBtn.style';
 import { Wrapper } from './AuthForm.styles';
 
 const AuthForm: React.FC = () => {
@@ -65,7 +66,7 @@ const AuthForm: React.FC = () => {
           />
         </div>
         {status === 'failed' ? <p className='error'>{error}</p> : null}
-        <button type='submit' disabled={status === 'loading'}>
+        <PrimaryBtn type='submit' disabled={status === 'loading'}>
           {status === 'loading' ? (
             <LoadingSpinner />
           ) : isLogin ? (
@@ -73,7 +74,7 @@ const AuthForm: React.FC = () => {
           ) : (
             'Create account'
           )}
-        </button>
+        </PrimaryBtn>
         <button
           type='button'
           onClick={switchAuthModeHandler}

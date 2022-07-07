@@ -75,7 +75,9 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
         </p>
 
         <p className='film_details__overview'>{film.overview}</p>
-        <PrimaryBtn onClick={onAddToWatchList}>Add to watchlist</PrimaryBtn>
+        <PrimaryBtn onClick={onAddToWatchList} className='film_details__addBtn'>
+          Add to watchlist
+        </PrimaryBtn>
       </div>
     </Wrapper>
   );
