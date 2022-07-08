@@ -12,17 +12,11 @@ export const GlobalStyle = createGlobalStyle`
       --clr-accent: #cc4425;
       --clr-white: #fff;
       --clr-black: #000;
-
-
+      
       /* Font sizes */
       --fs-small: 1rem;
       --fs-medium: 1.25rem;
       --fs-large: 1.75rem;
-
-      /* Desktop: width > 1024px
-      @media screen and (min-width: 64em) {
-        font-size: var(--fs-large);
-      } */
 
       /* Font families */
       --ff-sans: 'Oswald', sans-serif;
