@@ -10,8 +10,8 @@ export const GlobalStyle = createGlobalStyle`
       --clr-dark: #3E4147;
       --clr-light: #eaecef;
       --clr-accent: #cc4425;
-      --clr-white: #ffffff;
-      --clr-black: #000000;
+      --clr-white: #fff;
+      --clr-black: #000;
 
 
       /* Font sizes */

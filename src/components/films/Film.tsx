@@ -5,7 +5,7 @@ import { IMAGE_BASE_URL, POSTER_SIZE } from '../../lib/config';
 import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
-import noImage from '../../images/No-Image-Placeholder.png';
+import noPoster from '../../images/no-poster.png';
 import { formatReleaseDate } from '../../lib/helpers';
 
 const Film: React.FC<FilmType> = ({
@@ -25,7 +25,7 @@ const Film: React.FC<FilmType> = ({
             src={
               poster_path
                 ? `${IMAGE_BASE_URL}${POSTER_SIZE}${poster_path}`
-                : noImage
+                : noPoster
             }
             alt={title}
           />

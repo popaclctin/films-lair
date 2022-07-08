@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IMAGE_BASE_URL, POSTER_SIZE } from '../../lib/config';
-import { FilmType } from '../../types';
+import { CreditsType, FilmType } from '../../types';
 import { Wrapper } from './FilmDetails.styles';
 import { formatReleaseDate, formatRuntime } from '../../lib/helpers';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faStar } from '@fortawesome/free-solid-svg-icons';
 import { PrimaryBtn } from '../UI/PrimaryBtn.style';
+import ActorsList from '../Actors/ActorsList';
+import { fetchFilmCredits } from '../../lib/filmsApi';
 
 type Props = {
   film: FilmType;
@@ -15,6 +17,15 @@ type Props = {
 let dollarUSLocale = Intl.NumberFormat('en-US');
 
 const FilmDetails = ({ film, onAddToWatchList }: Props) => {
+  const [credits, setCredits] = useState<CreditsType | null>(null);
+  const [error, setError] = useState('');
+
+  useEffect(() => {
+    fetchFilmCredits(film.id)
+      .then((data) => setCredits(data))
+      .catch((error) => setError(error));
+  }, [film.id]);
+
   return (
     <Wrapper>
       <div className='film_poster'>
@@ -27,7 +38,6 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
           alt={film.title}
         />
       </div>
-
       <div className='film_details'>
         <h1 className='film_details__title'>{film.title}</h1>
         <p className='film_details__tagline'>{film.tagline}</p>
@@ -79,6 +89,8 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
           Add to watchlist
         </PrimaryBtn>
       </div>
+      {credits && <ActorsList actors={credits.cast} />}
+      {error && <p style={{ color: 'red' }}>{error}</p>}
     </Wrapper>
   );
 };

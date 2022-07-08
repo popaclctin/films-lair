@@ -24,4 +24,13 @@ export type FilmsType = {
   total_results: number;
 };
 
-export type GenresType = { id: number; name: string }[];
+export type ActorType = {
+  id: number;
+  name: string;
+  character: string;
+  profile_path: string | null;
+};
+
+export type CreditsType = {
+  cast: ActorType[];
+};

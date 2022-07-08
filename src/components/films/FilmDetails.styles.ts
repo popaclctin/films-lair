@@ -2,9 +2,11 @@ import styled from 'styled-components';
 
 export const Wrapper = styled.article`
   display: flex;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
+  padding: 1rem;
   background-color: var(--clr-light);
 
   /* Desktop: width > 1024px */
@@ -25,24 +27,16 @@ export const Wrapper = styled.article`
   }
 
   .film_poster {
-    flex: 1 0 25%;
+    flex: 1;
     img {
       object-fit: cover;
       width: 100%;
     }
   }
 
-  .film_details__addBtn {
-    width: 100%;
-    /* Desktop: width > 1024px */
-    @media screen and (min-width: 64em) {
-      width: 10rem;
-    }
-  }
-
   .film_details {
+    flex: 3;
     position: relative;
-    margin: 1rem;
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
@@ -105,6 +99,14 @@ export const Wrapper = styled.article`
     margin: 1rem 0;
     font-family: var(--ff-serif);
     text-indent: 30px;
+  }
+
+  .film_details__addBtn {
+    width: 100%;
+    /* Desktop: width > 1024px */
+    @media screen and (min-width: 64em) {
+      width: 10rem;
+    }
   }
 
   .label {
