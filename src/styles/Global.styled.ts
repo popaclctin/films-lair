@@ -23,6 +23,21 @@ export const GlobalStyle = createGlobalStyle`
       --ff-serif: 'Arvo', serif;
 
       --default-width: 80%;
+
+    /* Tablet: width > 480px */
+    @media screen and (min-width: 30em) {
+      
+    }
+
+    /* Laptop: width > 768px */
+    @media screen and (min-width: 48em) {
+      
+    }
+
+      /* Desktop: width > 1024px */
+    @media screen and (min-width: 64em) {
+      
+    }
     }
 
     /* ------------------- */

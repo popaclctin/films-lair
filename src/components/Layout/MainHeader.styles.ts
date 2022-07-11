@@ -11,14 +11,28 @@ export const Header = styled.header`
   justify-content: space-between;
   padding: 1rem;
   background-color: var(--clr-accent);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
 
   a {
     text-decoration: none;
   }
 
   nav {
+    width: 100%;
+    height: 25%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background: var(--clr-dark);
+
     ul {
       display: flex;
+      flex-direction: column;
+      justify-content: center;
       align-items: center;
       gap: 1rem;
       padding: 0;
@@ -30,6 +44,7 @@ export const Header = styled.header`
     }
 
     a {
+      display: block;
       color: var(--clr-white);
 
       &:hover {
@@ -41,6 +56,66 @@ export const Header = styled.header`
         color: var(--clr-dark);
       }
     }
+
+    transform: translateY(-100%);
+    transition: transform 300ms ease-out;
+  }
+
+  //Hamburger menu icon
+  .hamb {
+    cursor: pointer;
+    padding: 1rem;
+    z-index: 100;
+  }
+
+  .hamb-line {
+    background: var(--clr-white);
+    display: block;
+    height: 2px;
+    position: relative;
+    width: 24px;
+  }
+
+  .hamb-line::before,
+  .hamb-line::after {
+    background: var(--clr-white);
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    transition: all 200ms ease-out;
+  }
+
+  .hamb-line::before {
+    top: 5px;
+  }
+
+  .hamb-line::after {
+    top: -5px;
+  }
+
+  .side-menu {
+    display: none;
+  }
+
+  /* Toggle menu icon */
+  .side-menu:checked ~ nav {
+    transform: translateY(0);
+  }
+
+  .side-menu:checked ~ .hamb .hamb-line {
+    background: transparent;
+  }
+
+  .side-menu:checked ~ .hamb .hamb-line::before {
+    transform: rotate(-45deg);
+    top: 0;
+  }
+
+  .side-menu:checked ~ .hamb .hamb-line::after {
+    transform: rotate(45deg);
+    top: 0;
   }
 
   .logoutBtn {
@@ -69,6 +144,11 @@ export const Header = styled.header`
 
   .logo:hover {
     transform: scale(1.1);
+  }
+
+  .email {
+    color: var(--clr-accent);
+    order: -1;
   }
 
   @media screen and (min-width: 64em) {

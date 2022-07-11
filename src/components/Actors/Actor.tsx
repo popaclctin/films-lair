@@ -12,14 +12,16 @@ const Actor = ({ actor }: Props) => {
   return (
     <Wrapper>
       <td className='actor__profile'>
-        <img
-          src={
-            actor.profile_path
-              ? `${IMAGE_BASE_URL}/${PROFILE_SIZE}/${actor.profile_path}`
-              : noProfile
-          }
-          alt={actor.name}
-        />
+        <div>
+          <img
+            src={
+              actor.profile_path
+                ? `${IMAGE_BASE_URL}/${PROFILE_SIZE}/${actor.profile_path}`
+                : noProfile
+            }
+            alt={actor.name}
+          />
+        </div>
       </td>
       <td className='actor__name'>{actor.name}</td>
       <td>...</td>

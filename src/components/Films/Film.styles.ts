@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   background-color: var(--clr-light);
   color: var(--clr-black);
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
 
   a {
     color: inherit;
