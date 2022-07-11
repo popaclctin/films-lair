@@ -30,8 +30,8 @@ const MainHeader: React.FC = () => {
   const location = useLocation();
   return (
     <Header>
-      <Link to='/'>
-        <h1 className='logo'>Films Lair</h1>
+      <Link to='/' className='logo'>
+        <h1>Films Lair</h1>
       </Link>
       {location.pathname === '/films' ? <SearchInput /> : null}
       <input

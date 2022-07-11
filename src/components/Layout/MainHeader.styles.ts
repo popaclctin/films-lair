@@ -9,6 +9,7 @@ export const Header = styled.header`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 1rem;
   padding: 1rem;
   background-color: var(--clr-accent);
   box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.3);
@@ -139,6 +140,7 @@ export const Header = styled.header`
   }
 
   .logo {
+    display: block;
     transition: transform 0.3s ease-out;
   }
 
@@ -149,6 +151,30 @@ export const Header = styled.header`
   .email {
     color: var(--clr-accent);
     order: -1;
+  }
+
+  /* Laptop: width > 768px */
+  @media screen and (min-width: 48em) {
+    nav {
+      transform: none;
+      position: relative;
+      width: auto;
+      height: auto;
+      background: transparent;
+
+      ul {
+        flex-direction: row;
+      }
+    }
+
+    .email {
+      color: var(--clr-white);
+      order: 0;
+    }
+
+    .hamb {
+      display: none;
+    }
   }
 
   @media screen and (min-width: 64em) {
