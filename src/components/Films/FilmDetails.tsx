@@ -36,6 +36,8 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
               : undefined
           }
           alt={film.title}
+          width='500'
+          height='750'
         />
       </div>
       <div className='film_details'>
