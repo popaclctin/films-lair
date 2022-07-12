@@ -25,6 +25,7 @@ export const Wrapper = styled.div`
     img {
       object-fit: cover;
       width: 100%;
+      height: auto;
     }
   }
 

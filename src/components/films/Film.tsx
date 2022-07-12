@@ -28,6 +28,8 @@ const Film: React.FC<FilmType> = ({
                 : noPoster
             }
             alt={title}
+            width='500'
+            height='750'
           />
         </Link>
       </div>
