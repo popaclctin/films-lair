@@ -29,6 +29,7 @@ export const Header = styled.header`
     align-items: center;
     overflow: hidden;
     background: var(--clr-dark);
+    font-size: 1.2rem;
 
     ul {
       display: flex;

@@ -10,11 +10,21 @@ export const Wrapper = styled.section`
   }
 
   thead th:nth-child(1) {
-    width: 7%;
+    width: 15%;
+
+    /* Tablet: width > 480px */
+    @media screen and (min-width: 30em) {
+      width: 10%;
+    }
+
+    /* Laptop: width > 768px */
+    @media screen and (min-width: 48em) {
+      width: 7%;
+    }
 
     /* Desktop: width > 1024px */
     @media screen and (min-width: 64em) {
-      width: 3%;
+      width: 4%;
     }
   }
 
@@ -41,5 +51,10 @@ export const Wrapper = styled.section`
   th,
   td {
     overflow: hidden;
+    font-size: 1.1rem;
+  }
+
+  td:not(:first-child) {
+    padding: 0.5rem;
   }
 `;

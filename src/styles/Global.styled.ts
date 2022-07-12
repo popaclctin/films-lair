@@ -26,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
 
     /* Tablet: width > 480px */
     @media screen and (min-width: 30em) {
-      
+      /* --fs-large: 2rem; */
     }
 
     /* Laptop: width > 768px */
@@ -125,7 +125,10 @@ export const GlobalStyle = createGlobalStyle`
 
     h1 {
       line-height: 1.1;
-      font-size: var(--fs-large);
-      
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: inherit;
     }
 `;

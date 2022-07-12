@@ -53,11 +53,11 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
             <p>{film.vote_average}</p>
           </div>
         ) : null}
-        <p>
+        <p className='film_details__release-date'>
           <span className='label'>Release date:</span>
           <span>{formatReleaseDate(film.release_date)}</span>
         </p>
-        <p>
+        <p className='film_details__runtime'>
           <span className='label'>Runtime:</span>
           <span>{formatRuntime(film.runtime)}</span>
         </p>
@@ -69,7 +69,7 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
             ))}
           </p>
         </div>
-        <p>
+        <p className='film_details__budget'>
           <span className='label'>Budget:</span>
           <span>
             {film.budget
@@ -77,7 +77,7 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
               : 'Not available'}
           </span>
         </p>
-        <p>
+        <p className='film_details__revenue'>
           <span className='label'>Revenue:</span>
           <span>
             {film.revenue

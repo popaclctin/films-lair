@@ -41,6 +41,7 @@ export const Wrapper = styled.article`
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+    font-size: 1.1rem;
   }
 
   .film_details__title {
@@ -63,10 +64,10 @@ export const Wrapper = styled.article`
     overflow: hidden;
 
     p {
-      z-index: 100;
+      line-height: 1;
+      z-index: 10;
       color: var(--clr-white);
       font-family: var(--ff-serif);
-      font-size: 1.25em;
     }
   }
 

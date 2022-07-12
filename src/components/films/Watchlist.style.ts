@@ -18,7 +18,7 @@ export const Wrapper = styled.section`
       grid-template-columns: repeat(3, minmax(15rem, 1fr));
     }
 
-    /* Desktop: width > 1024px */
+    /* Desktop: width > 1440px */
     @media screen and (min-width: 90em) {
       grid-template-columns: repeat(4, minmax(15rem, 1fr));
     }
