@@ -6,6 +6,7 @@ import { AuthPage } from './pages/AuthPage';
 import NotFound from './pages/NotFoundPage';
 import FilmDetailsPage from './pages/FilmDetailsPage';
 import WatchListPage from './pages/WatchListPage';
+import ProtectedRoute from './components/Auth/ProtectedRoute';
 
 function App() {
   return (
@@ -15,7 +16,14 @@ function App() {
         <Route path='/films' element={<AllFilms />} />
         <Route path='/films/:filmId' element={<FilmDetailsPage />} />
         <Route path='/auth' element={<AuthPage />} />
-        <Route path='/watchlist' element={<WatchListPage />} />
+        <Route
+          path='/watchlist'
+          element={
+            <ProtectedRoute>
+              <WatchListPage />
+            </ProtectedRoute>
+          }
+        />
         <Route path='*' element={<NotFound />} />
       </Routes>
       <GlobalStyle />
