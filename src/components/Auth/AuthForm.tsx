@@ -22,6 +22,10 @@ const AuthForm: React.FC = () => {
     }
   }, [status, navigate, dispatch]);
 
+  useEffect(() => {
+    document.title = isLogin ? 'Login - Films Lair' : 'Sign Up - Films Lair';
+  }, [isLogin]);
+
   const submitHandler: React.FormEventHandler = (event) => {
     event.preventDefault();
 

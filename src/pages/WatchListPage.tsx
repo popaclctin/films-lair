@@ -31,6 +31,7 @@ const WatchListPage: React.FC = () => {
   };
 
   useEffect(() => {
+    document.title = 'Watchlist - Films Lair';
     setIsLoading(true);
     fetchWatchList(userId, authToken)
       .then((data) => setWatchList(data))

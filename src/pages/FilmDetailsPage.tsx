@@ -35,6 +35,7 @@ export default function FilmDetailsPage() {
     fetchFilmDetails(+filmId!) //convert to number and ignore null type warning
       .then((data) => {
         setFilm(data);
+        document.title = `${data.title} - Films Lair`;
       })
       .catch((error) => {
         console.log(error.message);

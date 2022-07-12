@@ -23,6 +23,10 @@ const AllFilms: React.FC = () => {
     dispatch(fetchFilmsThunk({ page: 1, searchTerm }));
   }, [dispatch, searchTerm]);
 
+  useEffect(() => {
+    document.title = 'Films Lair';
+  }, []);
+
   if (status === 'failed') {
     return <p style={{ color: 'red' }}>{error}</p>;
   } else {

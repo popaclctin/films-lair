@@ -59,7 +59,11 @@ const MainHeader: React.FC = () => {
               </button>
             </li>
           )}
-          {!isLoggedIn && <Link to='/auth'>Login</Link>}
+          {!isLoggedIn && (
+            <li>
+              <Link to='/auth'>Login</Link>
+            </li>
+          )}
         </ul>
       </nav>
     </Header>
