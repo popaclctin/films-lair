@@ -9,7 +9,7 @@ export const GET_FILM_DETAILS_BASE_URL = (movieId: number) =>
 export const GET_FILM_CREDITS_BASE_URL = (movieId: number) =>
   `${FILMS_API_URL}movie/${movieId}/credits?api_key=${FILMS_API_KEY}&language=en-US`;
 
-export const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
+export const IMAGE_BASE_URL = 'https://image.tmdb.org/t/p/';
 export const POSTER_SIZE = 'w500';
 export const PROFILE_SIZE = 'w185';
 
