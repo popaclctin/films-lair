@@ -40,7 +40,7 @@ const Film: React.FC<FilmType> = ({
               icon={faStar}
               className='film_details__rating_star'
             />
-            <p>{vote_average}</p>
+            <p>{vote_average.toFixed(1)}</p>
           </div>
         ) : null}
         <Link to={filmUrl}>
