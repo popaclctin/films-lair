@@ -50,7 +50,7 @@ const FilmDetails = ({ film, onAddToWatchList }: Props) => {
               className='film_details__rating_star'
               size='4x'
             />
-            <p>{film.vote_average}</p>
+            <p>{film.vote_average.toFixed(1)}</p>
           </div>
         ) : null}
         <p className='film_details__release-date'>
